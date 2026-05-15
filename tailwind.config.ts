@@ -13,6 +13,10 @@ export default {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        // PREMIUM (mai 2026) — Playfair Display pour les titres "hero" et
+        // sections. Donne immédiatement un ton "luxe / éditorial" qui
+        // différencie de la concurrence SaaS générique.
+        serif: ["var(--font-serif)", "Georgia", "serif"],
       },
       colors: {
         // Couleurs sémantiques — les vraies valeurs sont en CSS variables

@@ -4,29 +4,50 @@
 
 /**
  * CSS variables brand — alimentées par config/brand.ts via injection
- * inline dans app/layout.tsx (cf. <style id="brand-vars"> dans le head).
- *
- * Ces fallbacks indigo sont là au cas où l'injection rate (build SSG,
- * hydration mismatch, etc.) — la page reste lisible avec un thème
- * cohérent. À la première render réelle, layout.tsx surcharge.
+ * inline dans app/layout.tsx.
  */
 :root {
-  --brand-50:  238 242 255;
-  --brand-100: 224 231 255;
-  --brand-500: 99 102 241;
-  --brand-600: 79 70 229;
-  --brand-700: 67 56 202;
+  --brand-50:  250 250 249;
+  --brand-100: 245 245 244;
+  --brand-500: 168 132 80;
+  --brand-600: 23 23 23;
+  --brand-700: 10 10 10;
   --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
 }
 
 @layer base {
   body {
-    @apply bg-white text-slate-900 antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-white text-stone-900 antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    /* Optical letter spacing pour éviter le look "trop large" sur les écrans modernes */
+    letter-spacing: -0.011em;
   }
 
   /* Smooth scroll pour les anchor links nav → sections */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Titres serif premium — letter-spacing négatif resserré comme Apple */
+  h1, h2, h3 {
+    @apply font-serif;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Animation kit premium */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  /* Effet d'overlay sombre subtil pour les images hero */
+  .premium-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.7) 100%);
   }
 }

@@ -25,8 +25,10 @@ export const brand = {
    */
   fullName: "Smart Host — by Aven.ia",
 
-  /** Slogan / tagline principal (hero h1 subtitle) */
-  tagline: "Le concierge IA qui répond à vos voyageurs 24/7",
+  /** Slogan / tagline principal — style Apple "moins de mots, plus d'impact" */
+  tagline: "L'expérience voyageur réinventée.",
+  /** Sub-tagline qui développe (l'équivalent du "Think different. Just do it.") */
+  taglineSub: "Un concierge IA qui veille sur chacun de vos logements. 24h/24, dans toutes les langues, avec l'élégance d'un grand hôtel.",
 
   /** Pitch en 1 phrase (meta description, social cards) */
   pitch:
@@ -61,11 +63,17 @@ export const brand = {
    * qui utilise indigo-500/600 partout — Tailwind défaut).
    */
   colors: {
-    "brand-50":  "238 242 255", // indigo-50
-    "brand-100": "224 231 255", // indigo-100
-    "brand-500": "99 102 241",  // indigo-500
-    "brand-600": "79 70 229",   // indigo-600
-    "brand-700": "67 56 202",   // indigo-700
+    // PREMIUM (mai 2026) — Palette inspirée Apple / Tesla : noir profond,
+    // blanc pur, accent or sobre. Aucune couleur "saas générique" qui
+    // banaliserait la marque.
+    //
+    // Rebrand simple : changer les 5 valeurs ci-dessous = toute la landing
+    // se rebrand sans toucher un seul autre fichier.
+    "brand-50":  "250 250 249", // off-white
+    "brand-100": "245 245 244", // stone-100 (subtle background)
+    "brand-500": "168 132 80",  // gold accent (premium signature)
+    "brand-600": "23 23 23",    // near-black (boutons, texte principal)
+    "brand-700": "10 10 10",    // pure black (titres, hero text)
   },
 
   /** Statut juridique pour les mentions footer / CGU */

@@ -1,6 +1,27 @@
 import type { Metadata } from "next";
+import { Inter, Playfair_Display } from "next/font/google";
 import { brand } from "@/config/brand";
 import "./globals.css";
+
+/**
+ * Typography premium — combo classique des marques de luxe :
+ *   - Playfair Display (serif élégante) pour les titres
+ *   - Inter (sans-serif moderne, très lisible) pour le body
+ *
+ * On utilise next/font pour self-host les fonts (perfs Lighthouse + CLS = 0).
+ */
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
+  weight: ["400", "500", "600", "700"],
+});
 
 /**
  * Root layout — injecte les CSS variables brand au niveau HTML root,
@@ -60,11 +81,11 @@ function brandToCssVars(): string {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <style id="brand-vars">{`:root { ${brandToCssVars()} }`}</style>
       </head>
-      <body>{children}</body>
+      <body className="font-sans">{children}</body>
     </html>
   );
 }
