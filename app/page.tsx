@@ -1,28 +1,23 @@
-import { brand } from "@/config/brand";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/sections/hero";
+import { Experience } from "@/components/sections/experience";
 import { Features } from "@/components/sections/features";
 import { Pricing } from "@/components/sections/pricing";
 import { Cta } from "@/components/sections/cta";
 import { Footer } from "@/components/footer";
 
 /**
- * Page landing principale Smart Host.
+ * Landing principale Smart Host — refonte premium (mai 2026).
  *
- * Sections (dans l'ordre de scroll attendu) :
- *  1. Header (sticky avec logo + nav + CTA login)
- *  2. Hero (h1, sub, CTA primaire, screenshot dashboard)
- *  3. Features (6 features clés avec icônes)
- *  4. Pricing (5 tiers graduated du backend)
- *  5. CTA final (capture email pour rappel commercial)
- *  6. Footer (mentions légales auto-entrepreneur, links sociaux)
+ * Flow narratif inspiré Apple / Tesla :
+ *  1. Hero immersif pleine page (h-screen sombre, tagline serif)
+ *  2. Expérience : 3 moments en plein écran (avant/pendant/après séjour)
+ *  3. Features : grille de specs minimaliste sur fond sombre
+ *  4. Pricing : une seule carte centrale, dégressif détaillé
+ *  5. CTA : conversion finale sur fond sombre
+ *  6. Footer : éditorial minimaliste
  *
- * Tout le contenu textuel utilise `brand.X` → rebrand = 1 fichier
- * (config/brand.ts).
- *
- * Note : pas d'images réelles à ce stade (screenshots à venir via tes
- * captures dashboard). On utilise des placeholders SVG inline pour
- * que la page rende même sans assets.
+ * Tout le branding centralisé dans config/brand.ts (rebrand instantané).
  */
 export default function HomePage() {
   return (
@@ -30,6 +25,7 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <Experience />
         <Features />
         <Pricing />
         <Cta />
