@@ -5,6 +5,20 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
+  // Images externes autorisées (Unsplash pour les photos lifestyle premium).
+  // Next/Image refuse les domaines non whitelistés pour éviter les abus.
+  // Pattern restrictif au CDN officiel Unsplash uniquement.
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
+    ],
+    // Formats modernes (WebP / AVIF auto selon le browser support)
+    formats: ["image/avif", "image/webp"],
+  },
   // Headers sécurité de base (cohérent avec le dashboard Smart Host existant)
   async headers() {
     return [

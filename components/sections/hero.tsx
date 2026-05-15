@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { brand } from "@/config/brand";
 
 /**
@@ -21,15 +22,26 @@ import { brand } from "@/config/brand";
 export function Hero() {
   return (
     <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-stone-950">
-      {/* Background — placeholder gradient luxueux. À remplacer plus tard par une
-          vraie photo lifestyle de logement (vue mer, terrasse, intérieur premium). */}
+      {/* Background — vraie photo lifestyle (Unsplash, licence libre commerciale).
+          Source : config/brand.ts → images.hero. Next/Image optimise auto
+          (WebP/AVIF + responsive srcset + lazy loading désactivé pour LCP). */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-950" />
-        {/* Halo subtil pour donner de la profondeur */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-brand-500/20 via-brand-500/5 to-transparent blur-3xl" />
-        {/* Grain texture pour casser la planéité (très subtil, ~3% opacity) */}
+        <Image
+          src={brand.images.hero}
+          alt=""
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          className="object-cover"
+        />
+        {/* Overlay sombre dégradé pour la lisibilité du texte par-dessus */}
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-950/70 via-stone-950/60 to-stone-950/90" />
+        {/* Halo doré subtil pour donner de la profondeur premium */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-brand-500/15 via-brand-500/5 to-transparent blur-3xl pointer-events-none" />
+        {/* Grain texture pour casser la planéité (très subtil) */}
         <div
-          className="absolute inset-0 opacity-[0.04] mix-blend-overlay"
+          className="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none"
           style={{
             backgroundImage:
               "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
