@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * CSS variables brand — alimentées par config/brand.ts via injection
+ * inline dans app/layout.tsx (cf. <style id="brand-vars"> dans le head).
+ *
+ * Ces fallbacks indigo sont là au cas où l'injection rate (build SSG,
+ * hydration mismatch, etc.) — la page reste lisible avec un thème
+ * cohérent. À la première render réelle, layout.tsx surcharge.
+ */
+:root {
+  --brand-50:  238 242 255;
+  --brand-100: 224 231 255;
+  --brand-500: 99 102 241;
+  --brand-600: 79 70 229;
+  --brand-700: 67 56 202;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-slate-900 antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Smooth scroll pour les anchor links nav → sections */
+  html {
+    scroll-behavior: smooth;
+  }
+}
