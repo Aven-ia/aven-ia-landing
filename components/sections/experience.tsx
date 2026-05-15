@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { brand } from "@/config/brand";
 
 /**
  * Section "Expérience" — storytelling immersif qui remplace l'ancienne
@@ -28,6 +30,7 @@ const moments = [
     description:
       "Le code d'accès envoyé une heure avant. Les recommandations du quartier déjà glissées. Le restaurant favori réservé. Votre concierge IA orchestre chaque détail, dans la langue du voyageur.",
     accent: "Pré check-in automatisé",
+    image: brand.images.momentArrival,
   },
   {
     eyebrow: "Pendant le séjour",
@@ -35,6 +38,7 @@ const moments = [
     description:
       "Une question sur le wifi à 3 h du matin. Une fuite signalée le dimanche. Un besoin d'extra. Votre IA répond instantanément avec votre ton, votre voix, votre niveau de service. Vous gardez la main sur les sujets sensibles, l'IA traite le reste.",
     accent: "Disponibilité 24h/24",
+    image: brand.images.momentStay,
   },
   {
     eyebrow: "Après le départ",
@@ -42,6 +46,7 @@ const moments = [
     description:
       "Message de remerciement personnalisé. Demande d'avis envoyée au bon moment. Score de satisfaction collecté. Ménage programmé. Vous concentrez votre énergie sur la prochaine arrivée, pas sur les emails de relance.",
     accent: "Post-séjour intelligent",
+    image: brand.images.momentDeparture,
   },
 ];
 
@@ -79,24 +84,24 @@ export function Experience() {
                 </div>
               </motion.div>
 
-              {/* Visual side — placeholder élégant à remplacer par vraies images */}
+              {/* Visual side — vraie photo lifestyle (Unsplash, libre commercial) */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-stone-100 to-stone-200 shadow-xl"
+                className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
               >
-                {/* Halo subtil */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-brand-500/10 to-transparent blur-2xl -z-10" />
-                {/* Pattern background (placeholder lifestyle) */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-stone-300 text-sm font-medium tracking-wider uppercase">
-                    {idx === 0 && "Photo arrivée"}
-                    {idx === 1 && "Photo séjour"}
-                    {idx === 2 && "Photo départ"}
-                  </div>
-                </div>
+                {/* Halo doré subtil derrière l'image pour donner du relief */}
+                <div className="absolute -inset-4 bg-gradient-to-br from-brand-500/15 to-transparent blur-2xl -z-10" />
+                <Image
+                  src={moment.image}
+                  alt={moment.eyebrow}
+                  fill
+                  quality={85}
+                  sizes="(max-width: 1024px) 90vw, 45vw"
+                  className="object-cover"
+                />
               </motion.div>
             </div>
           </div>

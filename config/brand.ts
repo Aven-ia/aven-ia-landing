@@ -76,6 +76,32 @@ export const brand = {
     "brand-700": "10 10 10",    // pure black (titres, hero text)
   },
 
+  /**
+   * Photos lifestyle haute résolution (Unsplash — licence libre commercial,
+   * pas d'attribution requise).
+   *
+   * Le jour où Bastien a ses propres photos (vrais logements de ses
+   * conciergeries clientes, photoshoot pro), remplacer ces URLs par
+   * des assets locaux dans /public/images/ — la landing se met à jour
+   * automatiquement.
+   *
+   * Paramètres URL Unsplash :
+   *   - w=2400 → max width, suffisant pour les écrans 5K Retina
+   *   - q=85  → qualité visuelle haute sans bloat
+   *   - auto=format → WebP/AVIF auto selon browser
+   *   - fit=crop → recadrage centré intelligent
+   */
+  images: {
+    /** Hero pleine page — intérieur premium lumineux avec vue */
+    hero: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=2400&q=85&auto=format&fit=crop",
+    /** Section "Avant l'arrivée" — accueil chaleureux, lumière douce */
+    momentArrival: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1600&q=85&auto=format&fit=crop",
+    /** Section "Pendant le séjour" — détente, verre/terrasse */
+    momentStay: "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=1600&q=85&auto=format&fit=crop",
+    /** Section "Après le départ" — chambre paisible, fin de séjour */
+    momentDeparture: "https://images.unsplash.com/photo-1551776245-d35adfd7d2d6?w=1600&q=85&auto=format&fit=crop",
+  },
+
   /** Statut juridique pour les mentions footer / CGU */
   legal: {
     legalForm: "Auto-entrepreneur",
